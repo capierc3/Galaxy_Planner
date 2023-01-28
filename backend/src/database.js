@@ -1,9 +1,10 @@
-let sqlite3 = require('sqlite3').verbose();
-let md5 = require('md5');
+import sqlite3 from "sqlite3";
+import md5 from "md5";
 
-const DBSOURCE = "db.sqlite"
 
-let db = new sqlite3.Database(DBSOURCE, (err) => {
+const DBSOURCE = "backend/resources/db.sqlite"
+
+export let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
         // Cannot open database
         console.error(err.message)
@@ -29,6 +30,3 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             });
     }
 });
-
-
-module.exports = db

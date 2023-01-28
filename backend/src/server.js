@@ -1,10 +1,11 @@
 // Create express app
-let express = require("express");
-let app = express();
-let db = require("./database");
-let md5 = require("md5");
 
-let bodyParser = require("body-parser");
+import express from "express";
+import {db} from "./database.js";
+import md5 from "md5";
+import bodyParser from "body-parser";
+
+let app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
