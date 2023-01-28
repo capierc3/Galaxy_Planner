@@ -14,16 +14,16 @@ export const Star_Types = {
 }
 
 export const Star_Rarity = {
-    3: "Main Sequence",
-    14 :"Red Giant",
-    15 :"White Dwarf",
-    17 :"Red Dwarf",
-    19 :"Neutron",
-    20:"Super Giant"
+    0 : "Main Sequence",
+    14 : "Red Giant",
+    15 : "White Dwarf",
+    17 : "Red Dwarf",
+    19 : "Neutron",
+    20 : "Super Giant"
 }
 
 export const Main_Sequence_Rarity = {
-    3:"Main Sequence (O)",
+    0:"Main Sequence (O)",
     6:"Main Sequence (B)",
     9:"Main Sequence (A)",
     15:"Main Sequence (F)",

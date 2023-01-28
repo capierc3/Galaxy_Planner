@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import * as starCreator from "../../src/SystemBuilder/starCreator.js";
-import {Star_Types} from "../../src/SystemBuilder/starEnums.js";
+import {Star_Info, Star_Types} from "../../src/SystemBuilder/starEnums.js";
 
 describe("Star Type Test", function() {
     it ("Random stars should have a type", function () {
@@ -30,6 +30,15 @@ describe("Star Mass test", function () {
             expect(star.mass).to.not.eql("");
         }
     });
+    it('should be within the range of the Star Type', function () {
+        for (let type in Star_Types) {
+            for (let i = 0; i < 50; i++) {
+                let star = starCreator.newTypedStar(Star_Types[type]);
+                expect(star.mass).to.be.lte(Star_Info[Star_Types[type]].Solar_Mass.max,)
+                expect(star.mass).to.be.gte(Star_Info[Star_Types[type]].Solar_Mass.min)
+            }
+        }
+    });
 });
 
 describe("Star Radius test", function () {
@@ -43,6 +52,15 @@ describe("Star Radius test", function () {
             let star = starCreator.newTypedStar(Star_Types[type]);
             expect(star.radius).to.exist;
             expect(star.radius).to.not.eql("");
+        }
+    });
+    it('should be within the range of the Star Type', function () {
+        for (let type in Star_Types) {
+            for (let i = 0; i < 50; i++) {
+                let star = starCreator.newTypedStar(Star_Types[type]);
+                expect(star.radius).to.be.lte(Star_Info[Star_Types[type]].Solar_Radius.max)
+                expect(star.radius).to.be.gte(Star_Info[Star_Types[type]].Solar_Radius.min)
+            }
         }
     });
 });
@@ -60,6 +78,13 @@ describe("Star Color Temp test", function () {
             expect(star.temp).to.not.eql("");
         }
     });
+    it('should be within the range of the Star Type', function () {
+        for (let type in Star_Types) {
+            for (let i = 0; i < 50; i++) {
+                let star = starCreator.newTypedStar(Star_Types[type]);
+                expect(star.temp).to.be.lte(Star_Info[Star_Types[type]].color.max)
+                expect(star.temp).to.be.gte(Star_Info[Star_Types[type]].color.min)
+            }
+        }
+    });
 });
-
-//NEED TESTS TO CHECK RANGES!

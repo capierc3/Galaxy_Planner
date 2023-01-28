@@ -33,7 +33,11 @@ export function newStar() {
 
 export function newTypedStar(Star_Type) {
     star.type = Star_Type;
-    star.mass = dice.rollCustomFrac(Star_Info[star.type].Solar_Mass.min, Star_Info[star.type].Solar_Mass.max);
+    try {
+        star.mass = dice.rollCustomFrac(Star_Info[star.type].Solar_Mass.min, Star_Info[star.type].Solar_Mass.max);
+    } catch (e) {
+        console.log("Error with " + Star_Type);
+    }
     // find radius based on a 1 to 1 ratio with mass (I know not really the correct ratio)
     let range = Star_Info[star.type].Solar_Mass.max - Star_Info[star.type].Solar_Mass.min;
     let pos = star.mass - Star_Info[star.type].Solar_Mass.min;
