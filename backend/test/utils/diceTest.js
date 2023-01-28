@@ -31,3 +31,12 @@ describe("test dice.rollCustom", function () {
         }
     });
 });
+
+describe("test dice.rollCustomFrac", function () {
+    it('should be between .05 and .75', function () {
+        for (let i = 0; i < 50; i++) {
+            expect(dice.rollCustomFrac(.05,.75)).to.be.gt(.049);
+            expect(dice.rollCustomFrac(.05,.75)).to.be.lt(.751);
+        }
+    });
+});
