@@ -22,8 +22,5 @@ export const dice = {
     },
     rollCustom (low, high) {
         return Math.floor(Math.random() * (high - low + 1) + low)
-    },
-    rollCustomFrac (low, high) {
-        return (Math.random() * (high - low + 1) + low)
     }
 }
