@@ -1,7 +1,6 @@
 import {expect} from "chai";
 import {dice} from "../../src/utils/dice.js"
 
-
 let diceMax = [4,6,10,12,20,100]
 
 describe("dice test", function () {

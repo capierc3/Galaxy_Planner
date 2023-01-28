@@ -3,10 +3,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Express Rest API with SQLite",
-  "main": "src/server.js",
+  "main": "backend/src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "test": "mocha 'test/**/*.js' --recursive --reporter spec"
+    "start_backend": "node backend/src/server.js",
+    "test": "node_modules/.bin/mocha 'backend/test/*/*.js' --recursive --reporter spec"
   },
   "author": "",
   "license": "ISC",
