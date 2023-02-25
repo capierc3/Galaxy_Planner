@@ -14,6 +14,5 @@ describe("Planets properties are populated", function () {
         expect(planet.size).is.not.eql("");
         expect(planet.circumference).is.not.null;
         expect(planet.circumference).is.not.eql("");
-        console.log(planet)
     });
 });
