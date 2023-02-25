@@ -40,3 +40,13 @@ describe("test dice.rollCustomFrac", function () {
         }
     });
 });
+
+describe("Test rolling handful of dice", function () {
+    it('should be in the correct range', function () {
+        for (let i = 0; i < 50; i++) {
+            let roll = dice.rollHandful(dice.rollD10, 10);
+            expect(roll).to.be.gte(10);
+            expect(roll).to.be.lte(100);
+        }
+    });
+});
