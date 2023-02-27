@@ -20,7 +20,7 @@ export function newSystem() {
     if (roll >= 20) {
 
     } else {
-        
+
     }
 
 
