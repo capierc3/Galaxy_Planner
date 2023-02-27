@@ -2,6 +2,9 @@ export const dice = {
     rollD4 () {
         return Math.floor(Math.random() * 4) + 1
     },
+    rollD5 () {
+        return Math.floor(Math.random() * 5) + 1
+    },
     rollD6 () {
         return Math.floor(Math.random() * 6) + 1
     },
@@ -25,5 +28,12 @@ export const dice = {
     },
     rollCustomFrac (low, high) {
         return (Math.random() * (high - low) + low)
+    },
+    rollHandful(die,times) {
+        let total = 0;
+        for (let i = 0; i < times; i++) {
+            total += die()
+        }
+        return total;
     }
 }
