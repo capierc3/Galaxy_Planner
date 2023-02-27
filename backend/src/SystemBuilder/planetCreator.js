@@ -140,7 +140,7 @@ export function newPlanet() {
             shuffle(terrainType);
             planet.terrain.push({
                 type: terrainType.pop(),
-                coverage_percent: roll
+                percent: roll
             });
             coverage -= roll;
         }

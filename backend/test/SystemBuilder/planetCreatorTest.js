@@ -1,5 +1,3 @@
-import {Planet_Sizes, Planet_Types, planetJson} from "../../src/SystemBuilder/planetEnums.js";
-import {dice} from "../../src/utils/dice.js";
 import {expect} from "chai";
 import {newPlanet} from "../../src/SystemBuilder/planetCreator.js";
 
@@ -14,5 +12,19 @@ describe("Planets properties are populated", function () {
         expect(planet.size).is.not.eql("");
         expect(planet.circumference).is.not.null;
         expect(planet.circumference).is.not.eql("");
+    });
+    it('should have 100% atmosphere makeup', function () {
+        let total = 0;
+        for (let i = 0; i < planet.atmosphere_makeup.length; i++) {
+            total += planet.atmosphere_makeup[i].percent;
+        }
+        expect(total).to.be.eql(100);
+    });
+    it('should have 100% terrain makeup', function () {
+        let total = 0;
+        for (let i = 0; i < planet.terrain.length; i++) {
+            total += planet.terrain[i].percent;
+        }
+        expect(total).to.be.eql(100);
     });
 });
