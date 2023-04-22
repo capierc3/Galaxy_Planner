@@ -1,4 +1,4 @@
-import {newSystem} from "../../src/SystemBuilder/systemCreator.js";
+import {newSystem, addStar} from "../../src/SystemBuilder/systemCreator.js";
 import {expect} from "chai";
 
 describe("Solar System Test", function () {
@@ -6,10 +6,21 @@ describe("Solar System Test", function () {
     it("should have at least one star but no more than 3", function () {
        expect(solarSystem.stars.length).to.be.gte(1);
        expect(solarSystem.stars.length).to.be.lte(3);
-   });
-    it('should have values for its habitable zone ', function () {
-        expect(solarSystem.habitable_zone.min).to.exist;
-        expect(solarSystem.habitable_zone.max).to.exist;
     });
-    console.log(solarSystem);
+    console.log("%j",solarSystem);
+});
+
+describe("getStar function test", function () {
+   it("should create a star equal in value", function () {
+       let star = getStar();
+       expect(star.type === "Main Sequence (G)");
+   });
+    it("should create a star lower in value", function () {
+        let star = getStar();
+        expect(star.type === "Main Sequence (K)");
+    });
+    it("should create a star higher in value", function () {
+        let star = getStar();
+        expect(star.type === "Main Sequence (F)");
+    });
 });

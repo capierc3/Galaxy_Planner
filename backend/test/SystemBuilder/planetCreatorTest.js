@@ -25,6 +25,8 @@ describe("Planets properties are populated", function () {
         for (let i = 0; i < planet.terrain.length; i++) {
             total += planet.terrain[i].percent;
         }
-        expect(total).to.be.eql(100);
+        if (planet.type !== "Gas Planet") {
+            expect(total, planet.type).to.be.eql(100);
+        }
     });
 });

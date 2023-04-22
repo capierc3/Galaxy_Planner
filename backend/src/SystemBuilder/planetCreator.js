@@ -11,7 +11,7 @@ import {shuffle} from "../utils/arrayUtils.js";
 
 export function newPlanet() {
 
-    let planet = planetJson;
+    let planet = JSON.parse(JSON.stringify(planetJson));
     // Type
     let roll = dice.rollCustom(1, 3);
     planet.type = Planet_Types[roll].name;
@@ -92,6 +92,7 @@ export function newPlanet() {
     if (roll >= 13) {
         planet.rotation = dice.rollHandful(dice.rollD10, roll);
     } else {
+        if (roll < 1) roll = 1;
         planet.rotation = dice.rollHandful(Rotation[roll].dice, Rotation[roll].rolls);
     }
     roll = dice.rollPercent();
@@ -194,5 +195,6 @@ export function newPlanet() {
             type: type
         });
     }
+
     return planet;
 }

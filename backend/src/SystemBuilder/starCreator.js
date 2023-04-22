@@ -1,38 +1,33 @@
 import {dice} from "../utils/dice.js";
-import {Main_Sequence_Rarity, Star_Rarity, Star_Info} from "./starEnums.js";
-
-let star = {
-    name : "",
-    type : "",
-    mass : "",
-    radius : "",
-    temp : ""
-}
+import {Main_Sequence_Rarity, Star_Rarity, Star_Info, Star} from "./starEnums.js";
 
 export function newStar() {
     let roll = dice.rollD20();
+    let starType;
     for (let rarity in Star_Rarity) {
         if (roll >= rarity) {
-            star.type = Star_Rarity[rarity];
+            starType = Star_Rarity[rarity];
         } else {
             break;
         }
     }
-    if (star.type === "Main Sequence") {
+    if (starType === "Main Sequence") {
         roll = dice.rollPercent();
         for (let rarity in Main_Sequence_Rarity) {
             if (roll >= rarity) {
-                star.type = Main_Sequence_Rarity[rarity];
+                starType = Main_Sequence_Rarity[rarity];
             } else {
                 break;
             }
         }
     }
-    return newTypedStar(star.type);
+    return newTypedStar(starType);
 }
 
 export function newTypedStar(Star_Type) {
+    let star = JSON.parse(JSON.stringify(Star));
     star.type = Star_Type;
+    star.habitable_zoneLS = Star_Info[Star_Type].habitable;
     try {
         star.mass = dice.rollCustomFrac(Star_Info[star.type].Solar_Mass.min, Star_Info[star.type].Solar_Mass.max);
     } catch (e) {
