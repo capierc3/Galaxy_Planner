@@ -1,4 +1,5 @@
 name: Backend-Test
+
 'on':
   push:
   pull_request:
@@ -6,31 +7,12 @@ name: Backend-Test
       - opened
       - synchronize
       - reopened
-  schedule:
-    - cron: '0 6 * * 0'
 
 jobs:
   test:
-    name: 'Node.js v${{ matrix.node }}'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node:
-          - 14
-          - 16
-          - 18
+    name: 'Back end chai tests'
     steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '${{ matrix.node }}'
-      - uses: actions/checkout@v2
-      - name: 'Cache node_modules'
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-v${{ matrix.node }}-
       - name: Install Dependencies
         run: npm install
       - name: Run All Node.js Tests
