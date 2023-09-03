@@ -1,0 +1,14 @@
+name: Backend-Test
+
+'on': [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: 'Back end chai tests'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Run All Node.js Tests
+        run: npm run-script test
