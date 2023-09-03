@@ -71,8 +71,7 @@ export function newPlanet() {
     if (ap < 1) {
         planet.atmosphere_pressure_desc = Atmosphere_Pressure[1].thickness;
         planet.atmosphere_pressure_apr = Atmosphere_Pressure[1].apr;
-    }
-    if (ap < 13) {
+    } else if (ap < 13) {
         planet.atmosphere_pressure_desc = Atmosphere_Pressure[ap].thickness;
         planet.atmosphere_pressure_apr = Atmosphere_Pressure[ap].apr;
     } else {
@@ -89,6 +88,9 @@ export function newPlanet() {
         planet.tilt_degrees = 0;
     }
     roll = (dice.rollD10() - 1) + planetSizeMod;
+    if (roll < 1) {
+        roll = 1;
+    }
     if (roll >= 13) {
         planet.rotation = dice.rollHandful(dice.rollD10, roll);
     } else {

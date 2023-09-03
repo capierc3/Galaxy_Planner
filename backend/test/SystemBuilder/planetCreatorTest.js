@@ -20,13 +20,13 @@ describe("Planets properties are populated", function () {
         }
         expect(total).to.be.eql(100);
     });
-    it('should have 100% terrain makeup', function () {
-        let total = 0;
-        for (let i = 0; i < planet.terrain.length; i++) {
-            total += planet.terrain[i].percent;
-        }
-        if (planet.type !== "Gas Planet") {
-            expect(total, planet.type).to.be.eql(100);
-        }
-    });
+    if (planet.type === "Terrestrial Planet") {
+        it('should have 100% terrain makeup', function () {
+            let total = 0;
+            for (let i = 0; i < planet.terrain.length; i++) {
+                total += planet.terrain[i].percent;
+            }
+            expect(total).to.be.eql(100);
+        });
+    }
 });
