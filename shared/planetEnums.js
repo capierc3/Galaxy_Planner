@@ -1,4 +1,4 @@
-import {dice} from "../utils/dice.js";
+import {dice} from "../backend/src/utils/dice.js";
 
 export let planetJson = {
 

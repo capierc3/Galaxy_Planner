@@ -1,5 +1,5 @@
 import {dice} from "../utils/dice.js";
-import {Main_Sequence_Rarity, Star_Rarity, Star_Info, Star} from "./starEnums.js";
+import {Main_Sequence_Rarity, Star_Rarity, Star_Info, Star} from "../../../shared/starEnums.js";
 
 export function newStar() {
     let roll = dice.rollD20();

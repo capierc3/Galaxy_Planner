@@ -1,5 +1,5 @@
-import {dice} from "../utils/dice.js";
-import {newPlanet} from "./planetCreator.js";
+import {dice} from "../backend/src/utils/dice.js";
+import {newPlanet} from "../backend/src/SystemBuilder/planetCreator.js";
 
 export const Solar_System = {
     name: "",

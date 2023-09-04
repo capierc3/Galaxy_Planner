@@ -5,7 +5,7 @@ import {
     Planet_Sizes,
     Planet_Types,
     planetJson, Ring_Types, Rotation, Terrain, Tilt
-} from "./planetEnums.js";
+} from "../../../shared/planetEnums.js";
 import {dice} from "../utils/dice.js";
 import {shuffle} from "../utils/arrayUtils.js";
 

@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import * as starCreator from "../../src/SystemBuilder/starCreator.js";
-import {Star_Info, Star_Types} from "../../src/SystemBuilder/starEnums.js";
+import {Star_Info, Star_Types} from "../../../shared/starEnums.js";
 import {newStar} from "../../src/SystemBuilder/starCreator.js";
 
 describe("Star Type Test", function() {
@@ -93,7 +93,7 @@ describe("Star Color Temp test", function () {
 describe("Star has a habitable zone", function () {
     it('should have values for its habitable zone ', function () {
         let star = newStar();
-        expect(star.habitable_zone.min).to.exist;
-        expect(star.habitable_zone.max).to.exist;
+        expect(star.habitable_zoneLS.min).to.exist;
+        expect(star.habitable_zoneLS.max).to.exist;
     });
 });

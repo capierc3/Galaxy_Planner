@@ -1,11 +1,11 @@
-import {Solar_System, Star_Info, System_Info} from "./systemEnums.js";
+import {Solar_System, Star_Info, System_Info} from "../../../shared/systemEnums.js";
 import {dice} from "../utils/dice.js";
 import {newStar, newTypedStar} from "./starCreator.js";
-import {Star_Types} from "./starEnums.js";
+import {Star_Types} from "../../../shared/starEnums.js";
 
 export function newSystem() {
 
-    let system = Solar_System;
+    let system = JSON.parse(JSON.stringify(Solar_System));
     getStars(system);
     for (let star in system.stars) {
         system.orbiting_bodies.push({
