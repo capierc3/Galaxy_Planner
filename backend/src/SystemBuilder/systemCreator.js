@@ -2,10 +2,12 @@ import {Solar_System, Star_Info, System_Info} from "../../../shared/systemEnums.
 import {dice} from "../utils/dice.js";
 import {newStar, newTypedStar} from "./starCreator.js";
 import {Star_Types} from "../../../shared/starEnums.js";
+import {Prefix, Suffix} from "../../../shared/systemNames.js";
 
 export function newSystem() {
 
     let system = JSON.parse(JSON.stringify(Solar_System));
+    system.name = Prefix[dice.rollCustom(1,1000)] + Suffix[dice.rollCustom(1,1000)];
     getStars(system);
     for (let star in system.stars) {
         system.orbiting_bodies.push({
@@ -43,6 +45,7 @@ export function addStar(massDiff, stars) {
         stars.push(newStar());
     }
 }
+
 function getBodies() {
     let bodies = []
     let bodyAmt = dice.rollD10();
@@ -60,6 +63,7 @@ function getBodies() {
             }
         }
     }
+    //TODO add missing body data
     return bodies;
 }
 
@@ -91,6 +95,8 @@ function getStars(system) {
         system.stars[i].name = String.fromCharCode(97 + i);
     }
 }
+
+// functions used by getStars
 function getMassDiff() {
     let roll = dice.rollD20();
     let massDiff;

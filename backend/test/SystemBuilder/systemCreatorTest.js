@@ -7,6 +7,9 @@ describe("Solar System Test", function () {
         expect(solarSystem.stars.length).to.be.gte(1);
         expect(solarSystem.stars.length).to.be.lte(3);
     });
+    it("should have a name", function () {
+        expect(solarSystem.name).is.not.eql("");
+    });
     console.log("%j", solarSystem);
 });
 
