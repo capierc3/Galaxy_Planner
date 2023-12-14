@@ -200,3 +200,7 @@ export function newPlanet() {
 
     return planet;
 }
+
+export function fillLocData(Body) {
+
+}

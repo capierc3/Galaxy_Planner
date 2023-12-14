@@ -3,6 +3,9 @@ import {dice} from "../utils/dice.js";
 import {newStar, newTypedStar} from "./starCreator.js";
 import {Star_Types} from "../../../shared/starEnums.js";
 import {Prefix, Suffix} from "../../../shared/systemNames.js";
+import {Planet_Types} from "../../../shared/planetEnums.js";
+import {shuffle} from "../utils/arrayUtils.js";
+import {fillLocData} from "./planetCreator.js";
 
 export function newSystem() {
 
@@ -63,8 +66,45 @@ function getBodies() {
             }
         }
     }
+    bodies = orderBodies(bodies);
     //TODO add missing body data
+    bodies.forEach(body => fillLocData(body));
     return bodies;
+}
+
+function orderBodies(orbiting_bodies) {
+    let orderedPlanets = [];
+    let outerPlanets = [];
+    let randomPlanets = [];
+    let innerPlanetTypes = ["Asteroid", "Asteroid Belt", "Dwarf Planet", "Terrestrial Planet"];
+    while (orbiting_bodies.length > 0) {
+        let body = orbiting_bodies.pop();
+        if (innerPlanetTypes.includes(body.type)) {
+            orderedPlanets.push(body);
+        } else if (body.type === "Gas Planet" || body.type === "Oort Cloud") {
+            outerPlanets.push(body);
+        } else {
+            randomPlanets.push(body);
+        }
+    }
+    shuffle(orderedPlanets);
+    orderedPlanets = orderedPlanets.concat(outerPlanets);
+    while (randomPlanets.length > 0) {
+        let body = randomPlanets.pop();
+        let idx = dice.rollCustom(0,randomPlanets.length);
+        orderedPlanets.splice(idx,0,body);
+    }
+    let oort = null;
+    for (let i = 0; i < orderedPlanets.length; i++) {
+        if (orderedPlanets[i].type === "Oort Cloud") {
+            oort = orderedPlanets[i];
+            orderedPlanets.splice(i,1);
+        }
+    }
+    if (oort !== null) {
+        orderedPlanets.push(oort);
+    }
+    return orderedPlanets;
 }
 
 function getStars(system) {
@@ -118,4 +158,8 @@ function sortStarByMass(system) {
             return -1;
         }
     });
+}
+
+function printArray(bodies) {
+    bodies.forEach(bodies => console.log(bodies.type));
 }
